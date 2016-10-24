@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>css background-border</title>
+	<link href="../cssresetwww.css" rel="stylesheet">
+	<link href="../standard.css" rel="stylesheet">
+</head>
+<body>
+<h1>复杂的背景图案</h1>
+
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
+
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
+
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
+
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
+
+
+
+<style>
+body{text-align:center;}
+.box{height:200px;width:200px;margin:20px;display:inline-block;}
+
+.box:nth-of-type(1){
+	background-color:white;
+	background-image: linear-gradient(90deg, rgba(200, 0, 0, .5) 50%, transparent 0),
+										linear-gradient(rgba(200, 0, 0, .5) 50%, transparent 0);
+	background-size:30px 30px;
+}
+
+.box:nth-of-type(2){
+	background-color:#58a;
+	background-image: linear-gradient(white 1px, transparent 0),
+										linear-gradient(90deg, white 1px, transparent 0);
+	background-size:30px 30px;
+}
+
+.box:nth-of-type(3){
+	background-color:#58a;
+	background-image: linear-gradient(white 2px, transparent 0),
+										linear-gradient(90deg, white 2px, transparent 0),
+										linear-gradient(hsla(0,0%,100%, .3) 1px, transparent 0),
+										linear-gradient(90deg, hsla(0,0%,100%, .3) 1px, transparent 0);
+	background-size:75px 75px, 75px 75px, 15px 15px, 15px 15px;
+}
+
+
+</style>
+
+
+
+</body>
+</html>
