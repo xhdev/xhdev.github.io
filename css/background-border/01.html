@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>css background-border</title>
+	<link href="../cssresetwww.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
+
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
+
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
+
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
+
+
+
+<style>
+.box{height:200px;width:200px;margin:10px;float:left;}
+
+.box:nth-of-type(1){
+	background:linear-gradient(#f66 50%, #556 0);
+}
+
+.box:nth-of-type(2){
+	background:linear-gradient(#f66 50%, #556 0);
+	background-size:100% 30%;
+}
+
+.box:nth-of-type(3){
+	background:linear-gradient(#f66 33.3%, #556 0, #556 66.6%, yellow 0);
+	background-size:100% 30%;
+}
+
+.box:nth-of-type(4){
+	background:linear-gradient(90deg, #f66 50%, #556 0);
+}
+
+.box:nth-of-type(5){
+	background:linear-gradient(90deg, #f66 50%, #556 0);
+	background-size:30% 100%;
+}
+
+.box:nth-of-type(6){
+	background:linear-gradient(45deg, #f66 50%, #556 0);
+}
+
+.box:nth-of-type(7){
+	background:linear-gradient(45deg, #f66 50%, #556 0);
+	background-size:30% 100%;
+}
+
+.box:nth-of-type(8){
+	background:linear-gradient(45deg, #f66 50%, #556 0);
+	background-size:50% 50%;
+}
+
+.box:nth-of-type(9){
+	background:linear-gradient(45deg, #f66 25%, #556 0, #556 50%, #f66 0, #f66 75%,  #556 0);
+	background-size:50% 50%;
+}
+
+.box:nth-of-type(10){
+	background:repeating-linear-gradient(60deg, #f66, #f66 15px, #556 0, #556 30px);
+}
+
+.box:nth-of-type(11){
+	background-color:#f66;
+	background-image:repeating-linear-gradient(30deg, hsla(0, 0%, 100%, .1), hsla(0, 0%, 100%, .1) 15px, transparent 0, transparent 30px);
+}
+
+
+
+</style>
+
+
+
+</body>
+</html>
