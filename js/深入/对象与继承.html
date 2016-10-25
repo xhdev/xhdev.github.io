@@ -15,7 +15,7 @@
 
 
 <script>
-addDemo('#demo1', '宽松模式普通函数：指向全局对象；严格模式普通函数：undefined')
+addDemo('#demo1', {title:'', intro:'<p>宽松模式普通函数：指向全局对象</p><p>严格模式普通函数：undefined</p>'})
 
 addDemo('#demo2', 'Function.prototype.call(thisValue, arg1?, arg2?, ...)', [
 	"jane.sayHelloTo('Tarzan')"
@@ -87,6 +87,37 @@ addDemo('#demo5', '提取方法时丢失this？', [
 `)
 
 
+addDemo('#demo6', '列出自有属性键', [
+], [], `
+	
+	//Object.getOwnPropertyNames(obj) 返回obj的所有 自有 的属性键
+
+	//Object.keys(obj) 返回obj的所有 可枚举 的属性键
+
+`)
+
+
+addDemo('#demo7', '检测属性是否存在', [
+], [], `
+	
+	// propKey in obj 自有或继承 的属性
+
+	// Object.prototype.hasOwnProperty(propKey) 自有（非继承） 的属性
+
+	// Object.keys(obj) 返回 自有（非继承） 的属性
+	// Object.getOwnPropertyNames(obj)
+
+`)
+
+
+addDemo('#demo7', 'Object.freeze(obj)', [
+	"point.x = 2;point.x"
+	, "point.z = 2;point"
+], [], `
+	var point = {x:10, y:20}
+	Object.freeze(point)
+
+`)
 
 </script>
 
