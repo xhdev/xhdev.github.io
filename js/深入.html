@@ -3,10 +3,10 @@
 <head>
 	<title>js 深入 | xhdev @ihuixu</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	<link href="../bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
-	<script src="../common.js"></script>
+	<link href="../common/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../common/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+	<script src="../common/vue.min.js"></script>
+	<script src="../common/common.js"></script>
 </head>
 <body>
 
@@ -103,7 +103,7 @@ addDemo('#demo8', '严格相等', [
 	, "2 === true"
 ])
 
-addDemo('#demo9', {title:'宽松相等', intro:'均转为数字进行比较'}, [
+addDemo('#demo9', {title:'宽松相等', intro:'type不同，均转为数字进行比较；type相同，直接比较'}, [
 	"2 == true"
 	, "2 == false"
 	, "1 == true"
@@ -113,6 +113,11 @@ addDemo('#demo9', {title:'宽松相等', intro:'均转为数字进行比较'}, [
 	, "'1' == true"
 	, "'2' == true"
 	, "'abc' == true"
+
+	, "'abc' == new String('abc')"
+
+	, "['123'] == 123"
+
 ], [
 	"2 === 1"
 	, "2 === 0"
@@ -123,7 +128,10 @@ addDemo('#demo9', {title:'宽松相等', intro:'均转为数字进行比较'}, [
 	, "1 === 1"
 	, "2 === 1"
 	, "NaN === 1"
+
+	, "'abc' == 'abc'"
 ])
+
 
 
 </script>
