@@ -19,15 +19,16 @@
 	<h1>基础</h1>
 </div>
 
-<div class="container" id="typeof">
+<div class="container" id="demo1">
 	<h3>typeof</h3>
 	<div v-for="res in result">
-		<span v-for="(k,v) in res">{{k}}:<code>{{v}}</code></span>
+		<span v-if="k != 'error'" v-for="(k,v) in res">{{k}}:<code>{{v|json}}</code></span>
+		<span v-if="res.error">error:<code>{{res.error}}</code></span>
 	</div>
 
 	<script>
 	new Vue({
-		el: '#typeof'
+		el: '#demo1'
 		, data: {
 			result : []
 			, command : [
@@ -41,10 +42,24 @@
 				, 'typeof new RegExp("12","ig")'
 			]
 		}
+		, methods : {
+			add : function(res){
+				this.result.push(res)
+			}
+		}
 		, ready : function(){
 			for(var i in this.command){
 				var command = this.command[i]
-				this.result.push({input:command, output:eval(command)})
+				var res = {input:command}
+				try{
+					res.optput = eval(command)
+
+				}catch(e){
+					res.error = e
+				}
+				
+				this.add(res)
+
 			}	
 		}
 	})
@@ -56,7 +71,8 @@
 	<h3>一个变量的作用域，总是完整的函数</h3>
 	<pre>{{js}}</pre>
 	<div v-for="res in result">
-		<span v-for="(k,v) in res">{{k}}:<code>{{v}}</code></span>
+		<span v-if="k != 'error'" v-for="(k,v) in res">{{k}}:<code>{{v|json}}</code></span>
+		<span v-if="res.error">error:<code>{{res.error}}</code></span>
 	</div>
 
 	<script>
@@ -79,7 +95,15 @@
 			}
 		}
 		, ready : function(){
-			this.add({output:eval(this.js)})
+			var res = {}
+			try{
+				res.optput = eval(command)
+
+			}catch(e){
+				res.error = e
+			}
+			
+			this.add(res)
 		}
 	})
 	</script>
@@ -92,7 +116,8 @@
 	<h3>IIFE（立刻调用函数表达式）-场景</h3>
 	<pre>{{js}}</pre>
 	<div v-for="res in result">
-		<span v-for="(k,v) in res">{{k}}:<code>{{v}}</code></span>
+		<span v-if="k != 'error'" v-for="(k,v) in res">{{k}}:<code>{{v|json}}</code></span>
+		<span v-if="res.error">error:<code>{{res.error}}</code></span>
 	</div>
 
 	<script>
@@ -129,7 +154,8 @@
 	<h3>IIFE</h3>
 	<pre>{{js}}</pre>
 	<div v-for="res in result">
-		<span v-for="(k,v) in res">{{k}}:<code>{{v}}</code></span>
+		<span v-if="k != 'error'" v-for="(k,v) in res">{{k}}:<code>{{v|json}}</code></span>
+		<span v-if="res.error">error:<code>{{res.error}}</code></span>
 	</div>
 
 	<script>
