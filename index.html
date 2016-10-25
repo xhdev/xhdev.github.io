@@ -17,12 +17,12 @@
 
 <div class="container">
 	<h2>CSS</h2>
-	<div class="row show-grid">
+	<div class="row">
 		<div class="span4" v-for="(k, value) in CSSData">
 			<h3>{{k}}</h3>
-			<ol>
+			<ul>
 				<li v-for="v in value"><a href='./css/{{k}}/{{v}}.html'>{{v}}</a></li>
-			</ol>
+			</ul>
 		</div>
 
 	</div>
@@ -30,12 +30,17 @@
 
 <div class="container">
 	<h2>JS</h2>
-	<div class="row show-grid">
+	<div class="row">
 		<div class="span4" v-for="(k, value) in JSData">
-			<h3>{{k}}</h3>
-			<ol>
-				<li v-for="v in value"><a href='./css/{{k}}/{{v}}.html'>{{v}}</a></li>
-			</ol>
+			<div v-if="value.length > 0">
+				<h3>{{k}}</h3>
+				<ul>
+					<li v-for="v in value"><a href='./js/{{k}}/{{v}}.html'>{{v}}</a></li>
+				</ul>
+			</div>
+			<div v-else>
+				<h4><a href="./js/{{k}}.html">{{k}}</a></h4>
+			</div>
 		</div>
 
 	</div>
@@ -52,7 +57,7 @@ new Vue({
 			, 'background':['背景条纹', '复杂的背景图案']
 		}
 		, JSData : {
-			'值':['基础']
+			'基础':[]
 		}
 	}
 })

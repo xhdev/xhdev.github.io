@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>js 基础 | xhdev @ihuixu</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
+</head>
+<body>
+
+<div class="navbar navbar-inverse">
+	<div class="navbar-inner">
+		<a class="brand" href="../index.html">xhdev.github.io</a>
+	</div>
+</div>
+
+<div class="container text-center">
+	<h1>基础</h1>
+</div>
+
+<div class="container" id="typeof">
+	<h3>typeof</h3>
+	<div v-for="res in result">
+		<span v-for="(k,v) in res">{{k}}:<code>{{v}}</code></span>
+	</div>
+
+	<script>
+	new Vue({
+		el: '#typeof',
+		data: {
+			result : []
+			, command : [
+				'typeof 123'
+				, 'typeof null'
+				, 'typeof "s"'
+				, 'typeof undefined'
+				, 'typeof true'
+				, 'typeof {a:1}'
+				, 'typeof new function(){}'
+				, 'typeof new RegExp("12","ig")'
+			]
+		}
+		, ready : function(){
+			for(var i in this.command){
+				var command = this.command[i]
+				this.result.push({input:command, output:eval(command)})
+			}	
+		}
+	})
+	</script>
+</div>
+
+
+<div class="container">
+</div>
+
+
+
+</body>
+</html>
