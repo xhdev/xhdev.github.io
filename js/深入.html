@@ -21,11 +21,6 @@
 </div>
 
 
-<div class="container" id="demo2">
-	<h3>自动分号插入（ASI）</h3>
-	<p>换行符，结束花括号，文章结尾</p>
-</div>
-
 <div class="container" id="demo4">
 	<h3>严格模式</h3>
 	<code>'use strict'</code>
@@ -42,10 +37,14 @@
 
 
 <script>
+
+
 addDemo('#demo1', '通过eval对对象字面量求值', [
 	'eval("{a:123}")'
 	, 'eval("({a:123})")'
 ])
+
+addDemo('#demo2', {title:'自动分号插入（ASI）', intro:'换行符，结束花括号，文章结尾'})
 
 addDemo('#demo3', '数字字面量的方法调用', [
 	'1.toString()'
@@ -104,7 +103,7 @@ addDemo('#demo8', '严格相等', [
 	, "2 === true"
 ])
 
-addDemo('#demo9', {title:'宽松相等', intro:'转为数字进行比较'}, [
+addDemo('#demo9', {title:'宽松相等', intro:'均转为数字进行比较'}, [
 	"2 == true"
 	, "2 == false"
 	, "1 == true"

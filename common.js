@@ -25,7 +25,7 @@ function addDemo(id, text, command, expect){
 			<div class="container">
 				<h3>{{text.title}}</h3>
 				<p v-if="text.intro">{{text.intro}}</p>
-				<table class="table table-bordered table-striped">
+				<table v-if="command && command.length" class="table table-bordered table-striped">
 					<thead>
 						<tr>
 							<th v-for="k in label">
