@@ -18,7 +18,7 @@ function addNavbar(){
 	new Vue({
 		el: '#navbar'
 		, template : `
-			<div class="navbar navbar-inverse navbar-fixed-top">
+			<div class="navbar navbar-inverse">
 				<div class="navbar-inner">
 					<a class="brand" href="/">xhdev.github.io</a>
 				</div>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>js 深入 | xhdev @ihuixu</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="../../common/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../../common/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+	<script src="../../common/common.js"></script>
+</head>
+<body>
+
+<div class="container text-center">
+	<h1>对象与继承</h1>
+</div>
+
+
+<script>
+addDemo('#demo1', '宽松模式普通函数：指向全局对象；严格模式普通函数：undefined')
+
+addDemo('#demo2', 'Function.prototype.call(thisValue, arg1?, arg2?, ...)', [
+	"jane.sayHelloTo('Tarzan')"
+	, "jane.sayHelloTo.call(jane, 'Tarzan')"
+	, "var func = jane.sayHelloTo;func.call(jane, 'Tarzan')"
+], [], `
+
+	var jane = {
+		name : 'Jane'
+		, sayHelloTo : function(otherName){
+			'use strict'
+			return this.name+ ' says hello to '+ otherName
+		}
+	}
+
+`)
+
+addDemo('#demo3', 'Function.prototype.apply(thisValue, argArray)', [
+	"jane.sayHelloTo('Tarzan')"
+	, "jane.sayHelloTo.apply(jane, ['Tarzan'])"
+	, "var func = jane.sayHelloTo;func.apply(jane, ['Tarzan'])"
+
+], [], `
+
+	var jane = {
+		name : 'Jane'
+		, sayHelloTo : function(otherName){
+			'use strict'
+			return this.name+ ' says hello to '+ otherName
+		}
+	}
+
+`)
+
+
+addDemo('#demo4', 'Function.prototype.bind(thisValue, arg1?, arg2?, ...)', [
+	"jane.sayHelloTo('Tarzan')"
+	, "var func1 = jane.sayHelloTo.bind(jane);func1('Tarzan')"
+	, "var func2 = jane.sayHelloTo.bind(jane, 'Tarzan');func2()"
+], [], `
+
+	var jane = {
+		name : 'Jane'
+		, sayHelloTo : function(otherName){
+			'use strict'
+			return this.name+ ' says hello to '+ otherName
+		}
+	}
+
+`)
+
+
+addDemo('#demo5', '提取方法时丢失this？', [
+	"var func = counter.inc;func();counter.count"
+	, "var func = counter.inc.bind(counter);func();counter.count"
+
+	, "function callIt(cbk){cbk()};callIt(counter.inc);counter.count"
+	, "callIt(counter.inc.bind(counter));counter.count"
+], [], `
+
+	var counter = {
+		count : 0
+		, inc : function(){
+			//'use strict'
+			this.count++
+		}
+	}
+
+`)
+
+
+
+</script>
+
+
