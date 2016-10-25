@@ -41,7 +41,7 @@ function addFooter(){
 			}
 			, JSData : {
 				'基础':[]
-				, '深入':['语法','值', '运算符', 'Boolean', 'Number', 'String', '语句', '异常捕获', 'Function', '变量', '对象与继承', 'Array', 'RegExp', 'Date', 'Math', 'JSON', '标准全局变量', '编码']
+				, '深入':['语法','值', '运算符', 'Boolean', 'Number', 'String', /*'语句', '异常捕获',*/ 'Function', '变量', '对象与继承', 'Array', 'RegExp', 'Date', 'Math', 'JSON', '标准全局变量', '编码']
 			}
 		}
 		, template : `
@@ -84,7 +84,7 @@ function addFooter(){
 	})
 }
 
-function addDemo(id, text, command, expect){
+function addDemo(id, text, command, expect, js){
 
 	id = id || ''
 
@@ -105,12 +105,14 @@ function addDemo(id, text, command, expect){
 			, command : command || []
 			, expect : expect || []
 			, text : text
-			, label : ['input', 'output', 'error', 'expect', 'constructor']
+			, label : ['input', 'output', 'error', 'expect', 'typeof', 'constructor']
+			, js : js || ''
 		}
 		, template:`
 			<div class="container">
-				<h3>{{text.title}}</h3>
-				<p v-if="text.intro">{{text.intro}}</p>
+				<h3>{{{ text.title }}}</h3>
+				<p v-if="text.intro">{{{ text.intro }}}</p>
+				<pre v-if="js">{{js}}</pre>
 				<table v-if="command && command.length" class="table table-bordered table-striped">
 					<thead>
 						<tr>
@@ -131,27 +133,36 @@ function addDemo(id, text, command, expect){
 			</div>
 		`
 		, methods : {
-			add : function(res){
-				this.result.push(res)
+			add : function(data){
+				this.result.push(data)
 			}
 		}
 		, ready : function(){
-			for(var i in this.command){
-				var res = {input:this.command[i], expect:this.expect[i]}
-				try{
-					res.output = eval(res.input)
-					res['constructor'] = res.output.constructor.name
+			if(this.js){
+				var jsResult = eval(this.js)
+			}
 
-					if(typeof(res.output) == 'object')
-						res.output = JSON.stringify(res.output)
+			for(var i in this.command){
+				var data = {input:this.command[i], expect:this.expect[i]}
+				try{
+
+					data.output = eval(data.input)
+
+					data['typeof'] = typeof(data.output)
+
+					if(data.output !== undefined){
+						data['constructor'] = data.output.constructor.name
+					}
+
+					if(typeof(data.output) == 'object')
+						data.output = JSON.stringify(data.output)
 
 				}catch(e){
-					res.error = e
+					data.error = e
 				}
 				
-				this.add(res)
+				this.add(data)
 			}	
 		}
 	})
 }
-

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>js 深入 | xhdev @ihuixu</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="../../common/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../../common/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+	<script src="../../common/common.js"></script>
+</head>
+<body>
+
+<div class="container text-center">
+	<h1>Number</h1>
+</div>
+
+
+<script>
+
+addDemo('#demo1', '手动转换为数字', [
+	"Number('')"
+	, "+''"
+])
+
+addDemo('#demo2', 'parseFloat', [
+	"parseFloat(true)"
+	, "Number(true)"
+	, "parseFloat(null)"
+	, "Number(null)"
+	, "parseFloat('')"
+	, "Number('')"
+	, "parseFloat('1.23#')"
+	, "Number('1.23#')"
+
+])
+
+addDemo('#demo3', 'NaN 是唯一一个和自身不相等的值')
+addDemo('#demo4', 'Infinity 巨大的数字，除以了0的', [
+	"Math.pow(2, 1023)"
+	, "Math.pow(2, 1024)"
+	, "3/0"
+	, "3/-0"
+])
+
+
+</script>
+
+

@@ -24,144 +24,71 @@ addDemo('#demo1', '通过eval对对象字面量求值', [
 	, 'typeof new function(){}'
 	, 'typeof new RegExp("12","ig")'
 ])
+
+addDemo('#demo2', '一个变量的作用域，总是完整的函数', [
+	"foo()"
+], [], `
+	function foo(){
+		var x = -512
+		if(x < 0){
+			var tmp = x
+		}
+		return tmp
+	}
+`)
+
+
+addDemo('#demo3', 'IIFE（立刻调用函数表达式）-场景', [
+	'jsResult[1]()'
+	, 'jsResult[3]()'
+], [
+	1
+	, 3
+], `
+	function foo(){
+		var res = []
+		for(var i = 0;i<5;i++){
+			res.push(function(){return i})
+		}
+		return res
+	}
+	foo()
+`)
+
+addDemo('#demo4', 'IIFE', [
+	'jsResult[1]()'
+	, 'jsResult[3]()'
+], [
+	1
+	, 3
+], `
+	function foo(){
+		var res = []
+		for(var i = 0;i<5;i++){
+
+			(function(i){
+				res.push(function(){return i})
+			}(i))
+/*
+			(function(){
+				var i2 = i
+				res.push(function(){return i2})
+			})()
+*/
+
+/*
+			(function(i){
+				res.push(function(){return i})
+			})(i);
+*/
+
+		}
+		return res
+	}
+	foo()
+`)
+
 </script>
-
-
-<div class="container" id="demo2">
-	<h3>一个变量的作用域，总是完整的函数</h3>
-	<pre>{{js}}</pre>
-	<div v-for="res in result">
-		<span v-if="k != 'error'" v-for="(k,v) in res">{{k}}:<code>{{v|json}}</code></span>
-		<span v-if="res.error">error:<code>{{res.error}}</code></span>
-	</div>
-
-	<script>
-	new Vue({
-		el: '#demo2'
-		, data: {
-			js : `function foo(){
-				var x = -512
-				if(x < 0){
-					var tmp = x
-				}
-				return tmp
-			}
-			foo()`
-			, result : []
-		}
-		, methods : {
-			add : function(res){
-				this.result.push(res)
-			}
-		}
-		, ready : function(){
-			var res = {}
-			try{
-				res.optput = eval(command)
-
-			}catch(e){
-				res.error = e
-			}
-			
-			this.add(res)
-		}
-	})
-	</script>
-
-
-</div>
-
-
-<div class="container" id="demo3">
-	<h3>IIFE（立刻调用函数表达式）-场景</h3>
-	<pre>{{js}}</pre>
-	<div v-for="res in result">
-		<span v-if="k != 'error'" v-for="(k,v) in res">{{k}}:<code>{{v|json}}</code></span>
-		<span v-if="res.error">error:<code>{{res.error}}</code></span>
-	</div>
-
-	<script>
-	new Vue({
-		el: '#demo3'
-		, data: {
-			js : `function foo(){
-				var res = []
-				for(var i = 0;i<5;i++){
-					res.push(function(){return i})
-				}
-				return res
-			}
-			foo()`
-			, result : []
-		}
-		, methods : {
-			add : function(res){
-				this.result.push(res)
-			}
-		}
-		, ready : function(){
-			var res = eval(this.js)
-
-			this.add({input:'res[1]()', output:res[1](), expect:1})
-			this.add({input:'res[3]()', output:res[3](), expect:3})
-		}
-	})
-	</script>
-
-</div>
-
-<div class="container" id="demo4">
-	<h3>IIFE</h3>
-	<pre>{{js}}</pre>
-	<div v-for="res in result">
-		<span v-if="k != 'error'" v-for="(k,v) in res">{{k}}:<code>{{v|json}}</code></span>
-		<span v-if="res.error">error:<code>{{res.error}}</code></span>
-	</div>
-
-	<script>
-	new Vue({
-		el: '#demo4'
-		, data: {
-			js : `function foo(){
-				var res = []
-				for(var i = 0;i<5;i++){
-
-					(function(i){
-						res.push(function(){return i})
-					}(i))
-/*
-					(function(){
-						var i2 = i
-						res.push(function(){return i2})
-					})()
-*/
-
-/*
-					(function(i){
-						res.push(function(){return i})
-					})(i);
-*/
-
-				}
-				return res
-			}
-			foo()`
-			, result : []
-		}
-		, methods : {
-			add : function(res){
-				this.result.push(res)
-			}
-		}
-		, ready : function(){
-			var res = eval(this.js)
-
-			this.add({input:'res[1]()', output:res[1](), expect:1})
-			this.add({input:'res[3]()', output:res[3](), expect:3})
-		}
-	})
-	</script>
-
 
 </body>
 </html>
