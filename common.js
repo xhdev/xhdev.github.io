@@ -14,14 +14,28 @@ function addDemo(id, title, command){
 			result : []
 			, command : command || []
 			, title : title
+			, label : ['input', 'output', 'error', 'constructor']
 		}
 		, template:`
 			<div class="container">
 				<h3>{{title}}</h3>
-				<div v-for="res in result">
-					<span v-if="k != 'error'" v-for="(k,v) in res">{{k}}:<code>{{v}}</code></span>
-					<span v-if="res.error">error:<code>{{res.error}}</code></span>
-				</div>
+				<table class="table table-bordered table-striped">
+					<thead>
+						<tr>
+							<th v-for="k in label">
+								<span class="label label-info" v-if="k == 'input'">{{k}}</span>
+								<span class="label label-success" v-if="k == 'output'">{{k}}</span>
+								<span class="label label-important" v-if="k == 'error'">{{k}}</span>
+								<span class="label" v-if="k != 'error' && k != 'output' && k != 'input'">{{k}}</span>
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr v-for="res in result">
+							<td v-for="k in label"><code v-if="res[k] !== undefined">{{res[k]}}</code></td>
+						</tr>
+					</tbody>
+				</tabel>
 			</div>
 		`
 		, methods : {
