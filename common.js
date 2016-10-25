@@ -10,10 +10,12 @@ function addDemo(id, title, command){
 			, title : title
 		}
 		, template:`
-			<h3>{{title}}</h3>
-			<div v-for="res in result">
-				<span v-if="k != 'error'" v-for="(k,v) in res">{{k}}:<code>{{v}}</code></span>
-				<span v-if="res.error">error:<code>{{res.error}}</code></span>
+			<div class="container">
+				<h3>{{title}}</h3>
+				<div v-for="res in result">
+					<span v-if="k != 'error'" v-for="(k,v) in res">{{k}}:<code>{{v}}</code></span>
+					<span v-if="res.error">error:<code>{{res.error}}</code></span>
+				</div>
 			</div>
 		`
 		, methods : {
