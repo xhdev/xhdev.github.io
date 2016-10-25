@@ -45,32 +45,34 @@ function addFooter(){
 			}
 		}
 		, template : `
-		<div class="hero-unit">
-			<h2>CSS</h2>
-			<div class="row">
-				<div class="span4" v-for="(k, value) in CSSData">
-					<h3>{{k}}</h3>
-					<ul>
-						<li v-for="v in value"><a href='./css/{{k}}/{{v}}.html'>{{v}}</a></li>
-					</ul>
-				</div>
-
-			</div>
-
-			<h2>JS</h2>
-			<div class="row">
-				<div class="span4" v-for="(k, value) in JSData">
-					<div v-if="value.length > 0">
+		<div class="container">
+			<div class="hero-unit">
+				<h2>CSS</h2>
+				<div class="row">
+					<div class="span4" v-for="(k, value) in CSSData">
 						<h3>{{k}}</h3>
 						<ul>
-							<li v-for="v in value"><a href='./js/{{k}}/{{v}}.html'>{{v}}</a></li>
+							<li v-for="v in value"><a href='./css/{{k}}/{{v}}.html'>{{v}}</a></li>
 						</ul>
 					</div>
-					<div v-else>
-						<h4><a href="./js/{{k}}.html">{{k}}</a></h4>
-					</div>
+
 				</div>
 
+				<h2>JS</h2>
+				<div class="row">
+					<div class="span4" v-for="(k, value) in JSData">
+						<div v-if="value.length > 0">
+							<h3>{{k}}</h3>
+							<ul>
+								<li v-for="v in value"><a href='./js/{{k}}/{{v}}.html'>{{v}}</a></li>
+							</ul>
+						</div>
+						<div v-else>
+							<h4><a href="./js/{{k}}.html">{{k}}</a></h4>
+						</div>
+					</div>
+
+				</div>
 			</div>
 		</div>
 		`
