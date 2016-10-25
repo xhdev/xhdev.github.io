@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>js 深入 | xhdev @ihuixu</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="../../common/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../../common/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+	<script src="../../common/vue.min.js"></script>
+	<script src="../../common/common.js"></script>
+</head>
+<body>
+
+<div class="navbar navbar-inverse">
+	<div class="navbar-inner">
+		<a class="brand" href="../../index.html">xhdev.github.io</a>
+	</div>
+</div>
+
+<div class="container text-center">
+	<h1>值</h1>
+</div>
+
+
+<script>
+
+addDemo('#demo1', '原始值的包装对象', [
+	"typeof new String('abc')"
+	, "new String('abc') === 'abc'"
+	, "'abc' instanceof String"
+	, "'abc' === new String('abc')"
+	, "var a = new String('abc');var b = new String('abc');a == b"
+	, "new Number(123).valueOf()"
+])
+
+addDemo('#demo2', '强制类型转换', [
+	"Boolean(undefined)"
+	, "Boolean(null)"
+	, "Boolean(0)"
+	, "Boolean(NaN)"
+	, "Boolean('')"
+
+	, "Number('')"
+	, "Number(undefined)"
+	, "Number(null)"
+	, "Number(false)"
+	, "Number(true)"
+	, "Number({})"
+	, "Number('d3')"
+	, "Number('3d')"
+	, "Number('33')"
+
+	, "String(true)"
+	
+	, "Object(null)"
+	, "Object(undefined)"
+	, "Object(123)"
+	, "Object('abc')"
+
+])
+
+</script>
+
+
