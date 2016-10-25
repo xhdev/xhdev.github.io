@@ -1,4 +1,4 @@
-function addDemo(id, title, command){
+function addDemo(id, title, command, expect){
 
 	id = id || ''
 	title = title || id
@@ -13,8 +13,9 @@ function addDemo(id, title, command){
 		, data: {
 			result : []
 			, command : command || []
+			, expect : expect || []
 			, title : title
-			, label : ['input', 'output', 'error', 'constructor']
+			, label : ['input', 'output', 'error', 'expect', 'constructor']
 		}
 		, template:`
 			<div class="container">
@@ -45,10 +46,9 @@ function addDemo(id, title, command){
 		}
 		, ready : function(){
 			for(var i in this.command){
-				var command = this.command[i]
-				var res = {input:command}
+				var res = {input:this.command[i], expect:this.expect[i]}
 				try{
-					res.output = eval(command)
+					res.output = eval(res.input)
 					res['constructor'] = res.output.constructor.name
 
 					if(typeof(res.output) == 'object')

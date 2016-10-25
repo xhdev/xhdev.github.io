@@ -20,34 +20,11 @@
 	<h1>深入</h1>
 </div>
 
-<script>
-addDemo('#demo1', '通过eval对对象字面量求值', [
-	'eval("{a:123}")'
-	, 'eval("({a:123})")'
-])
-</script>
-
 
 <div class="container" id="demo2">
 	<h3>自动分号插入（ASI）</h3>
 	<p>换行符，结束花括号，文章结尾</p>
 </div>
-
-
-
-
-<script>
-addDemo('#demo3', '数字字面量的方法调用', [
-	'1.toString()'
-	, '1..toString()'
-	, '1 .toString()'
-	, '(1).toString()'
-	, '1.0.toString()'
-])
-</script>
-
-
-
 
 <div class="container" id="demo4">
 	<h3>严格模式</h3>
@@ -64,8 +41,20 @@ addDemo('#demo3', '数字字面量的方法调用', [
 </div>
 
 
-
 <script>
+addDemo('#demo1', '通过eval对对象字面量求值', [
+	'eval("{a:123}")'
+	, 'eval("({a:123})")'
+])
+
+addDemo('#demo3', '数字字面量的方法调用', [
+	'1.toString()'
+	, '1..toString()'
+	, '1 .toString()'
+	, '(1).toString()'
+	, '1.0.toString()'
+])
+
 addDemo('#demo5', '原始值的包装对象', [
 	"typeof new String('abc')"
 	, "new String('abc') === 'abc'"
@@ -74,11 +63,7 @@ addDemo('#demo5', '原始值的包装对象', [
 	, "var a = new String('abc');var b = new String('abc');a == b"
 	, "new Number(123).valueOf()"
 ])
-</script>
 
-
-
-<script>
 addDemo('#demo6', '强制类型转换', [
 	"Boolean(undefined)"
 	, "Boolean(null)"
@@ -104,25 +89,32 @@ addDemo('#demo6', '强制类型转换', [
 	, "Object('abc')"
 
 ])
-</script>
 
-
-
-<script>
 addDemo('#demo7', '运算符', [
 	"[1,2]+[3]"
 	, "String([1,2])"
 	, "String([3])"
 ])
-</script>
 
-
-<script>
 addDemo('#demo8', '严格相等', [
 	"undefined === undefined"
 	, "null === null"
 	, "NaN === NaN"
+	, "1 === true"
+	, "2 === true"
 ])
+
+addDemo('#demo9', '宽松相等', [
+	"2 == true // 2 === 1"
+	, "2 == false // 2 === 0"
+	, "1 == true // 1 === 1"
+	, "0 == false // 0 === 0"
+
+	, "'' == false // 0 === 0"
+	, "'1' == true // 1 === 1"
+])
+
+
 </script>
 
 
