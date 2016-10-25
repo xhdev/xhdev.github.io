@@ -26,10 +26,11 @@ addDemo('#demo1', '所有的对象都是真', [
 
 addDemo('#demo2', {
 	title:'逻辑运算符'
-	,intro:`
-		<p><code>&&</code>：如果第一个能换成false，就返回这个值，否则返回第二个</p>
-		<p><code>||</code>：如果第一个能换成true，就返回这个值，否则返回第二个</p>
-	`}, [
+	,intro:[
+			'<code>&&</code>：如果第一个能换成false，就返回这个值，否则返回第二个'
+			, '<code>||</code>：如果第一个能换成true，就返回这个值，否则返回第二个'
+		]
+	}, [
 	"'abc' || 123"
 	, "false || 123"
 

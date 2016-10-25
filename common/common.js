@@ -111,7 +111,7 @@ function addDemo(id, text, command, expect, js){
 		, template:`
 			<div class="container">
 				<h3>{{{ text.title }}}</h3>
-				<p v-if="text.intro">{{{ text.intro }}}</p>
+				<p v-if="text.intro" v-for="intro in text.intro">{{{ intro }}}</p>
 				<pre v-if="js">{{js}}</pre>
 				<table v-if="command && command.length" class="table table-bordered table-striped">
 					<thead>
@@ -150,7 +150,7 @@ function addDemo(id, text, command, expect, js){
 
 					data['typeof'] = typeof(data.output)
 
-					if(data.output !== undefined){
+					if(data.output !== undefined && data.output !== null){
 						data['constructor'] = data.output.constructor.name
 					}
 

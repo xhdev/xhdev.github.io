@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>js 深入 | xhdev @ihuixu</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="../../common/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../../common/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+	<script src="../../common/common.js"></script>
+</head>
+<body>
+
+<div class="container text-center">
+	<h1>RegExp</h1>
+</div>
+
+
+<script>
+
+addDemo('#demo1', '分组', [
+	"/^(a+)-\\1$/.test('a-a')"
+	, "/^(a+)-\\1$/.test('aaa-aaa')"
+	, "/^(a+)-\\1$/.test('aa-a')"
+])
+
+addDemo('#demo2', {title:'量词',intro:[
+	'<code>?</code> 0或1次'
+	, '<code>*</code> 0或多次'
+	, '<code>+</code> 1或多次'
+	, '<code>{n}</code> n次'
+	, '<code>{n,}</code> n或多次'
+	, '<code>{n,m}</code> n至m次'
+]}, [
+	"'<a> <strong>'.match(/^<(.*)>/)[1]"
+	, "'<a> <strong>'.match(/^<(.*?)>/)[1]"
+//	, "'<a> <strong>'.match(/<(.+?)>.*?<\\/\\1>/)"
+])
+
+
+addDemo('#demo3', {title:'断言',intro:[
+	'<code>^</code> 开始位置'
+	, '<code>$</code> 结束位置'
+	, '<code>\\b</code> 单词的边界'
+	, '<code>\\B</code> 非单词的边界'
+]}, [
+
+	"/\\bell\\b/.test('hello')"
+	, "/\\bell\\b/.test('ello')"
+	, "/\\bell\\b/.test('ell')"
+
+	, "/\\Bell\\B/.test('ell')"
+	, "/\\Bell\\B/.test('hell')"
+	, "/\\Bell\\B/.test('hello')"
+])
+
+</script>
+
+
