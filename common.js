@@ -1,7 +1,11 @@
-function addDemo(id, title, command, expect){
+function addDemo(id, text, command, expect){
 
 	id = id || ''
-	title = title || id
+
+	if(typeof(text) == 'string')
+		text = {
+			title : text
+		}
 
 	var box = document.createElement("div");
 	var name = id.split('#')
@@ -14,12 +18,13 @@ function addDemo(id, title, command, expect){
 			result : []
 			, command : command || []
 			, expect : expect || []
-			, title : title
+			, text : text
 			, label : ['input', 'output', 'error', 'expect', 'constructor']
 		}
 		, template:`
 			<div class="container">
-				<h3>{{title}}</h3>
+				<h3>{{text.title}}</h3>
+				<p v-if="text.intro">{{text.intro}}</p>
 				<table class="table table-bordered table-striped">
 					<thead>
 						<tr>
