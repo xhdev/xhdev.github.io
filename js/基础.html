@@ -6,6 +6,7 @@
 	<link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<link href="../bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
+	<script src="../common.js"></script>
 </head>
 <body>
 
@@ -19,19 +20,9 @@
 	<h1>基础</h1>
 </div>
 
-<div class="container" id="demo1">
-	<h3>typeof</h3>
-	<div v-for="res in result">
-		<span v-if="k != 'error'" v-for="(k,v) in res">{{k}}:<code>{{v|json}}</code></span>
-		<span v-if="res.error">error:<code>{{res.error}}</code></span>
-	</div>
-
-	<script>
-	new Vue({
-		el: '#demo1'
-		, data: {
-			result : []
-			, command : [
+<div class="container" id="demo1"></div>
+<script>
+addDemo('#demo1', '通过eval对对象字面量求值', [
 				'typeof 123'
 				, 'typeof null'
 				, 'typeof "s"'
@@ -40,31 +31,8 @@
 				, 'typeof {a:1}'
 				, 'typeof new function(){}'
 				, 'typeof new RegExp("12","ig")'
-			]
-		}
-		, methods : {
-			add : function(res){
-				this.result.push(res)
-			}
-		}
-		, ready : function(){
-			for(var i in this.command){
-				var command = this.command[i]
-				var res = {input:command}
-				try{
-					res.optput = eval(command)
-
-				}catch(e){
-					res.error = e
-				}
-				
-				this.add(res)
-
-			}	
-		}
-	})
-	</script>
-</div>
+])
+</script>
 
 
 <div class="container" id="demo2">

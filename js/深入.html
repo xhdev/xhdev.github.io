@@ -6,6 +6,7 @@
 	<link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<link href="../bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
+	<script src="../common.js"></script>
 </head>
 <body>
 
@@ -19,98 +20,83 @@
 	<h1>深入</h1>
 </div>
 
-<div class="container" id="demo1">
-	<h3>通过eval对对象字面量求值</h3>
-	<div v-for="res in result">
-		<span v-if="k != 'error'" v-for="(k,v) in res">{{k}}:<code>{{v|json}}</code></span>
-		<span v-if="res.error">error:<code>{{res.error}}</code></span>
-	</div>
-
-	<script>
-	new Vue({
-		el: '#demo1'
-		, data: {
-			result : []
-			, command : [
-				'eval("{a:123}")'
-				, 'eval("({a:123})")'
-			]
-		}
-		, methods : {
-			add : function(res){
-				this.result.push(res)
-			}
-		}
-		, ready : function(){
-			for(var i in this.command){
-				var command = this.command[i]
-				var res = {input:command}
-				try{
-					res.optput = eval(command)
-
-				}catch(e){
-					res.error = e
-				}
-				
-				this.add(res)
-			}	
-		}
-	})
-	</script>
-</div>
+<div class="container" id="demo1"></div>
+<script>
+addDemo('#demo1', '通过eval对对象字面量求值', [
+	'eval("{a:123}")'
+	, 'eval("({a:123})")'
+])
+</script>
 
 
 <div class="container" id="demo2">
 	<h3>自动分号插入（ASI）</h3>
 	<p>换行符，结束花括号，文章结尾</p>
+</div>
+
+
+
+<div class="container" id="demo3"></div>
+
+<script>
+addDemo('#demo3', '数字字面量的方法调用', [
+	'1.toString()'
+	, '1..toString()'
+	, '1 .toString()'
+	, '(1).toString()'
+	, '1.0.toString()'
+])
+</script>
+
+
+
+
+<div class="container" id="demo4">
+	<h3>严格模式</h3>
+	<code>'use strict'</code>
+	<ul>
+		<li>变量必须被声明</li>
+		<li>函数必须在作用域顶部声明</li>
+		<li>取消了<code>arguments.callee</code><code>arguments.caller</code></li>
+		<li>无方法的函数中，this为undefined</li>
+		<li>不能用with</li>
+		<li>没有八进制<code>010</code></li>
+	</ul>
 	
 </div>
 
 
 
-<div class="container" id="demo3">
-	<h3>数字字面量的方法调用</h3>
-	<div v-for="res in result">
-		<span v-if="k != 'error'" v-for="(k,v) in res">{{k}}:<code>{{v|json}}</code></span>
-		<span v-if="res.error">error:<code>{{res.error}}</code></span>
-	</div>
+<div class="container" id="demo5"></div>
+<script>
+addDemo('#demo5', '原始值的包装对象', [
+	"typeof new String('abc')"
+	, "new String('abc') === 'abc'"
+	, "'abc' instanceof String"
+	, "'abc' === new String('abc')"
+	, "var a = new String('abc');var b = new String('abc');a == b"
+	, "new Number(123).valueOf()"
+])
+</script>
 
-	<script>
-	new Vue({
-		el: '#demo3'
-		, data: {
-			result : []
-			, command : [
-				'1.toString()'
-				, '1..toString()'
-				, '1 .toString()'
-				, '(1).toString()'
-				, '1.0.toString()'
-			]
-		}
-		, methods : {
-			add : function(res){
-				this.result.push(res)
-			}
-		}
-		, ready : function(){
-			for(var i in this.command){
-				var command = this.command[i]
-				var res = {input:command}
-				try{
-					res.optput = eval(command)
 
-				}catch(e){
-					res.error = e
-				}
-				
-				this.add(res)
-			}	
-		}
-	})
-	</script>
-</div>
 
+<div class="container" id="demo6"></div>
+<script>
+addDemo('#demo6', '强制类型转换', [
+	"Boolean(undefined)"
+	, "Boolean(null)"
+	, "Boolean(0)"
+	, "Boolean(NaN)"
+	, "Boolean('')"
+
+	, "Number('')"
+	, "Number(undefined)"
+	, "Number(null)"
+	, "Number(false)"
+	, "Number(true)"
+])
+</script>
 
 
 
