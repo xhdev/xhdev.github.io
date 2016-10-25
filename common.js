@@ -29,6 +29,8 @@ function addDemo(id, title, command){
 				var res = {input:command}
 				try{
 					res.output = eval(command)
+					res['constructor'] = res.output.constructor.name
+
 					if(typeof(res.output) == 'object')
 						res.output = JSON.stringify(res.output)
 
