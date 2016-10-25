@@ -1,5 +1,36 @@
 function init(){
-	var box = document.createElement("div");
+	var script = document.createElement("script")
+	script.src = "https://xhdev.github.io/common/vue.min.js"
+	document.head.appendChild(script)
+
+	script.onload = function(){
+		addNavbar()
+		addFooter()
+	}
+}
+
+init() 
+
+function addNavbar(){
+	var child = document.body.childNodes[0]
+	var box = document.createElement("div")
+	box.id = 'navbar' 
+	document.body.insertBefore(box, child)
+
+	new Vue({
+		el: '#navbar'
+		, template : `
+			<div class="navbar navbar-inverse navbar-fixed-top">
+				<div class="navbar-inner">
+					<a class="brand" href="/">xhdev.github.io</a>
+				</div>
+			</div>
+		`
+	})
+}
+
+function addFooter(){
+	var box = document.createElement("div")
 	box.id = 'footer' 
 	document.body.appendChild(box)
 
@@ -16,7 +47,7 @@ function init(){
 			}
 		}
 		, template : `
-		<div class="container">
+		<div class="hero-unit">
 			<h2>CSS</h2>
 			<div class="row">
 				<div class="span4" v-for="(k, value) in CSSData">
@@ -48,9 +79,6 @@ function init(){
 	})
 }
 
-window.onload = init
-
-
 function addDemo(id, text, command, expect){
 
 	id = id || ''
@@ -60,7 +88,7 @@ function addDemo(id, text, command, expect){
 			title : text
 		}
 
-	var box = document.createElement("div");
+	var box = document.createElement("div")
 	var name = id.split('#')
 	box.id = name[1]
 	document.body.appendChild(box)
