@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>js 深入 | xhdev @ihuixu</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="../../common/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../../common/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+	<script src="../../common/common.js"></script>
+</head>
+<body>
+
+<div class="container text-center">
+	<h1>变量</h1>
+</div>
+
+
+<script>
+
+addDemo('#demo1', '变量以函数为作用域')
+
+addDemo('#demo2', '闭包', [
+	"var inc = createInc(5);inc(1);"
+	, "inc(2);"
+], [], `
+	function createInc(startValue){
+		return function(step){
+			startValue += step
+			return startValue
+		}
+	}
+
+`)
+
+</script>
+
+
