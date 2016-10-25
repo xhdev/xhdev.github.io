@@ -6,6 +6,7 @@
 	<link href="./common/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<link href="./common/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
 	<script src="./common/vue.min.js"></script>
+	<script src="./common/common.js"></script>
 </head>
 <body>
 
@@ -14,56 +15,6 @@
 		<a class="brand" href="./index.html">xhdev.github.io</a>
 	</div>
 </div>
-
-<div class="container">
-	<h2>CSS</h2>
-	<div class="row">
-		<div class="span4" v-for="(k, value) in CSSData">
-			<h3>{{k}}</h3>
-			<ul>
-				<li v-for="v in value"><a href='./css/{{k}}/{{v}}.html'>{{v}}</a></li>
-			</ul>
-		</div>
-
-	</div>
-</div>
-
-<div class="container">
-	<h2>JS</h2>
-	<div class="row">
-		<div class="span4" v-for="(k, value) in JSData">
-			<div v-if="value.length > 0">
-				<h3>{{k}}</h3>
-				<ul>
-					<li v-for="v in value"><a href='./js/{{k}}/{{v}}.html'>{{v}}</a></li>
-				</ul>
-			</div>
-			<div v-else>
-				<h4><a href="./js/{{k}}.html">{{k}}</a></h4>
-			</div>
-		</div>
-
-	</div>
-</div>
-
-
-
-<script>
-new Vue({
-	el: 'body',
-	data: {
-		CSSData: {
-			'border':['多重边框']
-			, 'background':['背景条纹', '复杂的背景图案']
-		}
-		, JSData : {
-			'基础':[]
-			, '深入':['语法','值', '运算符', 'Boolean', 'Number', 'String', '语句', '异常捕获', 'Function', '变量', '对象与继承', 'Array', 'RegExp', 'Date', 'Math', 'JSON', '标准全局变量', '编码']
-		}
-	}
-})
-</script>
-
 
 </body>
 </html>

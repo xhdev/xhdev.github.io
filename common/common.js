@@ -1,3 +1,56 @@
+function init(){
+	var box = document.createElement("div");
+	box.id = 'footer' 
+	document.body.appendChild(box)
+
+	new Vue({
+		el: '#footer'
+		, data: {
+			CSSData: {
+				'border':['多重边框']
+				, 'background':['背景条纹', '复杂的背景图案']
+			}
+			, JSData : {
+				'基础':[]
+				, '深入':['语法','值', '运算符', 'Boolean', 'Number', 'String', '语句', '异常捕获', 'Function', '变量', '对象与继承', 'Array', 'RegExp', 'Date', 'Math', 'JSON', '标准全局变量', '编码']
+			}
+		}
+		, template : `
+		<div class="container">
+			<h2>CSS</h2>
+			<div class="row">
+				<div class="span4" v-for="(k, value) in CSSData">
+					<h3>{{k}}</h3>
+					<ul>
+						<li v-for="v in value"><a href='./css/{{k}}/{{v}}.html'>{{v}}</a></li>
+					</ul>
+				</div>
+
+			</div>
+
+			<h2>JS</h2>
+			<div class="row">
+				<div class="span4" v-for="(k, value) in JSData">
+					<div v-if="value.length > 0">
+						<h3>{{k}}</h3>
+						<ul>
+							<li v-for="v in value"><a href='./js/{{k}}/{{v}}.html'>{{v}}</a></li>
+						</ul>
+					</div>
+					<div v-else>
+						<h4><a href="./js/{{k}}.html">{{k}}</a></h4>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		`
+	})
+}
+
+window.onload = init
+
+
 function addDemo(id, text, command, expect){
 
 	id = id || ''
@@ -41,7 +94,7 @@ function addDemo(id, text, command, expect){
 							<td v-for="k in label"><code v-if="res[k] !== undefined">{{res[k]}}</code></td>
 						</tr>
 					</tbody>
-				</tabel>
+				</table>
 			</div>
 		`
 		, methods : {
