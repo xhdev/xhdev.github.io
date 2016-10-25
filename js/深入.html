@@ -20,7 +20,6 @@
 	<h1>深入</h1>
 </div>
 
-<div id="demo1"></div>
 <script>
 addDemo('#demo1', '通过eval对对象字面量求值', [
 	'eval("{a:123}")'
@@ -36,7 +35,6 @@ addDemo('#demo1', '通过eval对对象字面量求值', [
 
 
 
-<div id="demo3"></div>
 
 <script>
 addDemo('#demo3', '数字字面量的方法调用', [
@@ -67,7 +65,6 @@ addDemo('#demo3', '数字字面量的方法调用', [
 
 
 
-<div id="demo5"></div>
 <script>
 addDemo('#demo5', '原始值的包装对象', [
 	"typeof new String('abc')"
@@ -81,7 +78,6 @@ addDemo('#demo5', '原始值的包装对象', [
 
 
 
-<div id="demo6"></div>
 <script>
 addDemo('#demo6', '强制类型转换', [
 	"Boolean(undefined)"
@@ -106,8 +102,27 @@ addDemo('#demo6', '强制类型转换', [
 	, "Object(undefined)"
 	, "Object(123)"
 	, "Object('abc')"
+
 ])
 </script>
 
+
+
+<script>
+addDemo('#demo7', '运算符', [
+	"[1,2]+[3]"
+	, "String([1,2])"
+	, "String([3])"
+])
+</script>
+
+
+<script>
+addDemo('#demo8', '运算符', [
+	"[1,2]+[3]"
+	, "String([1,2])"
+	, "String([3])"
+])
+</script>
 
 

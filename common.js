@@ -1,6 +1,12 @@
 function addDemo(id, title, command){
+
 	id = id || ''
 	title = title || id
+
+	var box = document.createElement("div");
+	var name = id.split('#')
+	box.id = name[1]
+	document.body.appendChild(box)
 
 	return new Vue({
 		el: id 
