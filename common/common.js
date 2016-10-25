@@ -1,9 +1,7 @@
 function init(){
-	var script = document.createElement("script")
-	script.src = "https://xhdev.github.io/common/vue.min.js"
-	document.head.appendChild(script)
+	document.write('<script src="https://xhdev.github.io/common/vue.min.js"></script>')
 
-	script.onload = function(){
+	window.onload = function(){
 		addNavbar()
 		addFooter()
 	}
