@@ -7,36 +7,33 @@
 	<link href="./bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
 </head>
 <body>
-<script src="http://code.jquery.com/jquery.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
 
 <div class="container">
 
 	<h2>CSS</h2>
 
-	<div class="row show-grid">
+	<div class="row show-grid" id="cssArea">
 
-		<div class="span4">
-			<h3>background-border</h3>
+		<div class="span4" v-for="(k, value) in CSSData">
+			<h3>{{ k }}</h3>
 			<ol>
-				<li><a href='./css/background-border/多重边框.html'>多重边框</a></li>
-				<li><a href='./css/background-border/背景条纹.html'>背景条纹</a></li>
-				<li><a href='./css/background-border/复杂的背景图案.html'>复杂的背景图案</a></li>
+				<li v-for="v in value"><a href='./css/{{k}}/{{v}}.html'>{{v}}</a></li>
 			</ol>
 		</div>
-
-
-		<div class="span4">
-			<h3>background-border</h3>
-			<ol>
-				<li><a href='./css/background-border/多重边框.html'>多重边框</a></li>
-				<li><a href='./css/background-border/背景条纹.html'>背景条纹</a></li>
-				<li><a href='./css/background-border/复杂的背景图案.html'>复杂的背景图案</a></li>
-			</ol>
-		</div>
-
 
 	</div>
+
+	<script>
+	new Vue({
+		el: '#cssArea',
+		data: {
+			CSSData: {
+				'background-border':['多重边框', '背景条纹', '复杂的背景图案']
+			}
+		}
+	})
+	</script>
 
 </div>
 
