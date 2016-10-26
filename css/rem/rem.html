@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>css rem | xhdev @ihuixu</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no">
+	<link href="../../common/cssresetm.css" rel="stylesheet">
+	<script>
+	(function (doc, win) {
+		var resizeEvt = 'orientationchange' in win ? 'orientationchange' : 'resize',
+use_screen_base = 750,
+		base_size = parseInt(use_screen_base),
+		docE = doc.documentElement,
+		recalc = function () {
+			var clientWidth = win.innerWidth;
+			docE.style.fontSize = 100 * (clientWidth / base_size) + 'px';
+		};
+
+		recalc();
+		win.addEventListener(resizeEvt, recalc, false);
+		delete use_screen_base;
+	})(document, window);
+	</script>
+	<script src="../../common/common.js"></script>
+</head>
+<body>
+
+123
+
+</body>
+</html>
