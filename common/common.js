@@ -39,6 +39,7 @@ function addFooter(){
 				'border':['多重边框']
 				, 'background':['背景条纹', '复杂的背景图案']
 				, 'float':['清除浮动']
+				, 'rem':['rem']
 			}
 			, JSData : {
 				'基础':[]
