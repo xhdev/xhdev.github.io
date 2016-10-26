@@ -35,7 +35,6 @@
 	<div class="parent">
 		<div class="child"></div>
 		<div class="child"></div>
-		<div style="clear:both;"></div>
 	</div>
 </div>
 
@@ -69,8 +68,8 @@
 .child:nth-of-type(2){background-color:#556;}
 
 
-.demo3 .child:nth-of-type(2){*zoom:1;}
-.demo3 .child:nth-of-type(2):after{clear: both;content: ".";display:block;visibility:hidden;height:0; }
+.demo3 .parent{*zoom:1;}
+.demo3 .parent:after{clear: both;content: ".";display:block;visibility:hidden;height:0; }
 
 .demo4 .parent{overflow:hidden;}
 .demo5 .parent{float:left;width:100%;}

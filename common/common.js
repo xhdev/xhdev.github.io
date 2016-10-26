@@ -40,6 +40,7 @@ function addFooter(){
 				, 'background':['背景条纹', '复杂的背景图案']
 				, 'float':['清除浮动']
 				, 'rem':['rem']
+				, 'flex':['flexbox']
 			}
 			, JSData : {
 				'基础':[]
